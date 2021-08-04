@@ -32,9 +32,9 @@ window.addEventListener("resize", () => {
       item.params.slidesPerGroup = 1;
       item.params.slidesPerView = 1;
     }
+  } else {
+    location.reload();
   }
-  // document.querySelector(".section-1").scrollIntoView();
-  // location.reload();
 });
 
 // SECTION 2
@@ -56,7 +56,6 @@ setInterval(function () {
 
 function changeLanguageHTML(lang) {
   location.hash = lang;
-  document.querySelector(".section-1").scrollIntoView();
   location.reload();
 }
 
@@ -78,6 +77,7 @@ const language = {
     section_2_free_h3:
       "Meu lema? <b>Mais rápido possível</b>, no <b>menor preço</b>",
     sectionThreeHeading: `Veja meus Projetos`,
+    loadingParagraph: "Carregando...",
     mobile_paragraph: "Toque nos cards",
     projectLink: "Ir para o Projeto",
     js_project_1: `Um simples app em javascript de conta bancária. (Use para
@@ -112,6 +112,7 @@ const language = {
     section_2_free_h3:
       "My motto? <b>As fast as Possible</b>, at <b>the lowest Price</b>",
     sectionThreeHeading: `See my Projects`,
+    loadingParagraph: `Loading...`,
     mobile_paragraph: "Touch on the cards",
     projectLink: "Go to the Project",
     js_project_txt: [
@@ -166,6 +167,7 @@ function changeLangText(lang) {
 
   document.querySelector(".mobile-paragraph").innerHTML =
     language[lang].mobile_paragraph;
+  projectTexts(".loading", language[lang].loadingParagraph);
   projectTexts(".js-des-1", language[lang].js_project_1);
   projectTexts(".js-des-2", language[lang].js_project_2);
   projectTexts(".js-des-3", language[lang].js_project_3);
@@ -194,24 +196,43 @@ function projectTexts(element, search) {
 }
 
 // LAZY PROJECT IMAGES
-window.addEventListener("scroll", () => {
-  const projectImgs = document.querySelectorAll(".project-img");
-  console.log(projectImgs);
-  const imgObs = (entries, observer) => {
-    const [entry] = entries;
-    if (!entry.isIntersecting) return;
-    entry.target.src = entry.target.dataset.src;
-    entry.target.addEventListener("load", (e) => {
-      entry.target.parentElement.classList.remove("blur");
+// const projectImgs = document.querySelectorAll(".project-img");
+// console.log(projectImgs);
+// const imgObs = (entries, observer) => {
+//   const [entry] = entries;
+//   if (!entry.isIntersecting) return;
+//   entry.target.src = entry.target.dataset.src;
+//   entry.target.addEventListener("load", (e) => {
+//     entry.target.parentElement.classList.remove("blur");
+//   });
+//   observer.unobserve(entry.target);
+// };
+
+// const imgObserver = new IntersectionObserver(imgObs, {
+//   root: null,
+//   threshold: 0.2,
+//   rootMargin: "-100px",
+// });
+
+// projectImgs.forEach((img) => imgObserver.observe(img));
+
+////JS APPS
+const jsApps = document.querySelector(".section-3-js-pjs");
+const websites = document.querySelector(".section-3-pj-ws");
+function loadImgAs(imgsContainer, loadingClass) {
+  window.addEventListener("scroll", () => {
+    const imgs = imgsContainer.querySelectorAll("img");
+    if (window.pageYOffset + window.innerHeight >= imgsContainer.offsetTop) {
+      imgs.forEach((img) => {
+        img.src = img.dataset.src;
+        img.parentElement.classList.remove("blur");
+      });
+    }
+    imgs[2].addEventListener("load", (e) => {
+      document.querySelector(loadingClass).style.opacity = "0";
     });
-    observer.unobserve(entry.target);
-  };
-
-  const imgObserver = new IntersectionObserver(imgObs, {
-    root: null,
-    threshold: 0.2,
-    rootMargin: "-100px",
   });
+}
 
-  projectImgs.forEach((img) => imgObserver.observe(img));
-});
+loadImgAs(jsApps, ".loading-1");
+loadImgAs(websites, ".loading-2");
