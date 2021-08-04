@@ -11,9 +11,9 @@ const options = {
 let typed = new Typed(".section-1-heading h1", options);
 // swiper.js
 var swiper = new Swiper(".section-3-slide", {
-  slidesPerView: 2,
+  slidesPerView: 1,
   spaceBetween: 20,
-  slidesPerGroup: 2,
+  slidesPerGroup: 1,
   loop: true,
   loopFillGroupWithBlank: true,
 
