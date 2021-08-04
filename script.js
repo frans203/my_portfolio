@@ -33,8 +33,8 @@ window.addEventListener("resize", () => {
       item.params.slidesPerView = 1;
     }
   }
-  document.querySelector(".section-1").scrollIntoView();
-  location.reload();
+  // document.querySelector(".section-1").scrollIntoView();
+  // location.reload();
 });
 
 // SECTION 2
