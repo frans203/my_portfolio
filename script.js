@@ -100,7 +100,7 @@ const language = {
 
   eng: {
     sectionOneHeading:
-      "<i>Hi</i>, i'm Francisco Santana. <b>Frond-end Developer</b>.",
+      "<i>Hi</i>, i'm Francisco Santana. <b>Front-end Developer</b>.",
     sectionTwoHeading: "About Me",
     sectionTwoPara: `I like programming since i was a teenager, but just in the end of the High School i started to study and delve into this area, and  becoming a Frond-End Developer.`,
     sectionTwoSkills: `  I have <span class="sk sk-1">emotional intelligence</span>,
