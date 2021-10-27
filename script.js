@@ -80,8 +80,15 @@ const language = {
     loadingParagraph: "Carregando...",
     mobile_paragraph: "Toque nos cards",
     projectLink: "Ir para o Projeto",
+    n_project_1: ` Clone Front-end da plataforma de streaming HULU feito com Next.js e TailwindCSS`,
+    n_project_2: `Simples rede social feita com Next.js e DatoCMS`,
+
+    r_project_1: `Clone Front-End da Netflix feito com React.js`,
+    r_project_2: `Clone Front-End da Amazon feito com React.js, com página de login
+`,
     js_project_1: `Um simples app em javascript de conta bancária. (Use para
       acessar: js 1111, jd 2222)`,
+
     js_project_2: `  Pesquise por várias receitas com esse app`,
     js_project_3: ` Jogo simples para dois jogadores com um dado`,
     js_project_4: `Marque dados de corrida ou pedalagem em um mapa`,
@@ -121,6 +128,12 @@ const language = {
       `Simple dice game for two players`,
       `Store running or cycling data on a map`,
     ],
+    n_project_1: `Front-End HULU streaming plataform clone made with Next.js and TailwindCSS`,
+
+    n_project_2: `Simple social network made with Next.js and DatoCMS`,
+
+    r_project_1: `Front-End Netflix clone made with React.js`,
+    r_project_2: `Front-End Amazon clone made with React.js with login page`,
     js_project_1: `A javascript simple bank account app. (users and PINS: js 1111, jd 2222)`,
     js_project_2: ` Search for many recipes with this app`,
     js_project_3: ` Simple dice game for two players`,
@@ -168,6 +181,11 @@ function changeLangText(lang) {
   document.querySelector(".mobile-paragraph").innerHTML =
     language[lang].mobile_paragraph;
   projectTexts(".loading", language[lang].loadingParagraph);
+
+  projectTexts(".n-des-1", language[lang].n_project_1);
+  projectTexts(".n-des-2", language[lang].n_project_2);
+  projectTexts(".r-des-1", language[lang].r_project_1);
+  projectTexts(".r-des-2", language[lang].r_project_2);
   projectTexts(".js-des-1", language[lang].js_project_1);
   projectTexts(".js-des-2", language[lang].js_project_2);
   projectTexts(".js-des-3", language[lang].js_project_3);
@@ -219,6 +237,8 @@ function projectTexts(element, search) {
 ////JS APPS
 const jsApps = document.querySelector(".section-3-js-pjs");
 const websites = document.querySelector(".section-3-pj-ws");
+const reactApp = document.querySelector(".section-3-r-pjs");
+const nextApp = document.querySelector(".section-3-n-pjs");
 function loadImgAs(imgsContainer, loadingClass) {
   window.addEventListener("scroll", () => {
     const imgs = imgsContainer.querySelectorAll("img");
@@ -236,3 +256,5 @@ function loadImgAs(imgsContainer, loadingClass) {
 
 loadImgAs(jsApps, ".loading-1");
 loadImgAs(websites, ".loading-2");
+loadImgAs(reactApp, ".loading-3");
+loadImgAs(nextApp, ".loading-4");

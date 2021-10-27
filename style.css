@@ -13,7 +13,7 @@ html {
 body {
   overflow-x: hidden;
 }
-.container{
+.container {
   overflow-x: hidden;
 }
 /* Scrollbar */
@@ -278,9 +278,11 @@ body {
 .section-3 {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
+  height: fit-content;
   background-color: #333;
   padding: 10rem 0;
   clip-path: polygon(0 4%, 100% 0, 100% 96%, 0% 100%);
@@ -303,6 +305,7 @@ body {
 .top-section-3 {
   margin-bottom: 6rem;
   flex-direction: column;
+  width: 100%;
 }
 .section-3-heading {
   font-size: 6rem;
@@ -329,17 +332,27 @@ body {
 .section-3-js-pjs {
   margin-bottom: 20rem;
 }
+.cell {
+  width: 45%;
+  height: 100%;
+  overflow: hidden;
+  margin: 2rem;
+}
+.cell:nth-child(5) {
+  margin-top: -20rem;
+}
 .project {
-  height: 25rem;
-  width: 50rem;
+  height: 20rem;
+  width: 30rem;
   position: relative;
   overflow: hidden;
   transition: all 0.5s;
   border: 0.1rem solid #333;
   border-radius: 0.5rem;
-  margin: 0 auto;
+
   background: rgb(205, 29, 240);
 }
+
 .section-3-js-pjs .project {
   background-color: rgb(0, 72, 255);
 }
@@ -543,6 +556,9 @@ body {
 }
 
 @media (max-width: 1100px) {
+  .section-3 {
+    flex-direction: column;
+  }
   .change-language-btns {
     height: 4rem;
     width: 15rem;
