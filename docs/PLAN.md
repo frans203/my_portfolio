@@ -123,7 +123,7 @@ Fases 0–4 implementadas na branch `feat/nextjs-rewrite` (sem commit ainda). Bu
 Decisões tomadas por padrão (revisar):
 - Hero: opção 1 do copy.
 - CTA: modal com formulário → Netlify Forms (Zustand + React Query), com e-mail como alternativa.
-- Domínio: https://fransportfolio.netlify.app (site Netlify "fransportfolio", deploy automático da `master`). O domínio fsdev.site cadastrado na Netlify hoje aponta para a Vercel..
+- Domínio: https://fsdev.site (site Netlify "fransportfolio", DNS na Netlify, deploy automático da `master`)..
 - Projetos antigos (clones) removidos.
 - Copy que não existia (logos, processo, EN do FAQ/versatilidade, rótulos) foi escrita no mesmo tom.
 
