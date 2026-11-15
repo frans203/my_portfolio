@@ -1,7 +1,8 @@
 // Dados globais do site. Ajuste aqui quando o domínio/contatos mudarem.
 export const site = {
-  // Domínio de produção (Netlify: site "fransportfolio"). Usado em canonical, sitemap e Open Graph.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://fsdev.site",
+  // URL de produção (Netlify: site "fransportfolio"). Usado em canonical, sitemap e Open Graph.
+  // O domínio fsdev.site está apontado para a Vercel (outro site); trocar aqui se ele vier para a Netlify.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://fransportfolio.netlify.app",
   name: "Francisco Santana Soluções Digitais",
   shortName: "Francisco Santana",
   email: "franciscosantana203@gmail.com",
