@@ -25,6 +25,7 @@ Comandos: `npm run dev`, `npm run build` (gera `out/`), `npm run lint`. Não há
   - Processo: linha do tempo preenche com a rolagem e as etapas acendem.
   - Agente: conexões se desenham + pulso de dados (`.flow-pulse` no CSS) + ponto "respirando" no nó do agente.
   - Logo FS se desenha no header (`.fs-draw`) e na seção do fundador.
+  - Serviços: palco de cenas "massinha" (`service-scenes.tsx`, classes `.clay-*` no CSS, monocromático): bot de conversa no celular, painel de barras, PC com código/correção, navegador + celular montando. Desktop (`ServiceStage`): palco fixo ao lado da lista, troca a cada 4,8s; hover/foco num serviço mostra a cena dele. Mobile/tablet (`ServiceScene`): cada serviço mostra sua cena antes do texto; a cena monta ao entrar na tela (recomeça ao voltar). Textos das cenas em `services.scenes` do dicionário.
   - Contínuas: globo 3D do hero (`hero-globe.tsx`, lib `cobe`, pausa fora da tela) e marquee de logos.
   - `MotionConfig reducedMotion="user"` em `providers.tsx` + regra de `prefers-reduced-motion` no CSS.
 - **Tipografia**: Schibsted Grotesk (`--font-schibsted`, texto/títulos com `tracking-[-0.03em]`) + IBM Plex Mono (`--font-plex-mono`, rótulos pequenos em caixa alta).

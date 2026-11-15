@@ -107,6 +107,21 @@ export const en: Dictionary = {
           "Scalable, end-to-end applications built with modern ecosystems (React, Next.js, Node.js, React Native) designed to support enterprise growth.",
       },
     ],
+    scenes: {
+      chat: {
+        name: "Virtual assistant",
+        status: "online",
+        messages: [
+          { from: "user", text: "Hi! I'd like to book a trial class." },
+          { from: "bot", text: "Sure! I have slots tomorrow at 9am or 6pm. Which works?" },
+          { from: "user", text: "6pm, please." },
+          { from: "bot", text: "Booked ✓ I've sent the confirmation here." },
+        ],
+      },
+      dashboard: { title: "Orders per week", legend: "Updated in real time" },
+      code: { file: "agent.ts" },
+      web: { url: "yourbusiness.com" },
+    },
   },
   versatility: {
     eyebrow: "Technical versatility",

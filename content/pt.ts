@@ -107,6 +107,21 @@ export const pt: Dictionary = {
           "Aplicações completas e escaláveis em React, Next.js, Node.js e React Native, desenhadas sob medida para suportar o crescimento da sua empresa.",
       },
     ],
+    scenes: {
+      chat: {
+        name: "Assistente virtual",
+        status: "online",
+        messages: [
+          { from: "user", text: "Oi! Quero agendar uma aula experimental." },
+          { from: "bot", text: "Claro! Tenho horários amanhã às 9h ou às 18h. Qual prefere?" },
+          { from: "user", text: "18h, por favor." },
+          { from: "bot", text: "Agendado ✓ Te enviei a confirmação por aqui." },
+        ],
+      },
+      dashboard: { title: "Pedidos por semana", legend: "Atualizado em tempo real" },
+      code: { file: "agent.ts" },
+      web: { url: "seunegocio.com.br" },
+    },
   },
   versatility: {
     eyebrow: "Versatilidade técnica",

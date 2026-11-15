@@ -59,6 +59,12 @@ export type Dictionary = {
     title: string;
     deliverLabel: string;
     items: { title: string; description: string }[];
+    scenes: {
+      chat: { name: string; status: string; messages: { from: "user" | "bot"; text: string }[] };
+      dashboard: { title: string; legend: string };
+      code: { file: string };
+      web: { url: string };
+    };
   };
   versatility: {
     eyebrow: string;
