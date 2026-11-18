@@ -122,7 +122,7 @@ Fases 0–4 implementadas na branch `feat/nextjs-rewrite` (sem commit ainda). Bu
 
 Decisões tomadas por padrão (revisar):
 - Hero: opção 1 do copy.
-- CTA: modal com formulário → Netlify Forms (Zustand + React Query), com e-mail como alternativa.
+- CTA: todos os botões abrem o WhatsApp (`wa.me`) com mensagem pré-preenchida por idioma. Modal/Netlify Forms, Zustand e React Query removidos. Instagram removido dos contatos.
 - Domínio: https://fsdev.site (site Netlify "fransportfolio", DNS na Netlify, deploy automático da `master`)..
 - Projetos antigos (clones) removidos.
 - Copy que não existia (logos, processo, EN do FAQ/versatilidade, rótulos) foi escrita no mesmo tom.
@@ -134,7 +134,7 @@ Falta (Fase 5): commit + push, PR, conferir Deploy Preview e Netlify Forms, ativ
 ## Pendências (decisões suas)
 
 1. **Hero**: qual das 3 opções de headline (copy 2.A)?
-2. **Contato / CTA**: para onde vai "Agendar conversa" — Calendly/Cal.com, WhatsApp, e-mail ou formulário (Netlify Forms)?
+2. ~~**Contato / CTA**~~ — decidido: WhatsApp (+55 83 99685-3565).
 3. **Domínio**: o site fica no `*.netlify.app` atual ou vai ter domínio próprio? (necessário para canonical, sitemap e OG.)
 4. **Projetos antigos** (clones Netflix/Amazon etc.): sugiro **não** levar para o novo site — conflitam com o posicionamento de estúdio. Cases reais (Pod1um, Halavanca, BK) entram no lugar quando houver texto.
 5. **Copy faltando**: seção de logos, "como trabalhamos", e a versão EN do FAQ/versatilidade/hero 3.

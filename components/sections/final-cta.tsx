@@ -18,7 +18,7 @@ export function FinalCta({ dict }: { dict: Dictionary }) {
               <p className="text-neutral-400">{dict.finalCta.description}</p>
               <p className="text-white">{dict.finalCta.direct}</p>
             </div>
-            <ContactButton className="h-auto min-h-12 py-3 text-center whitespace-normal">
+            <ContactButton message={dict.contact.whatsappMessage} className="h-auto min-h-12 py-3 text-center whitespace-normal">
               {dict.finalCta.cta}
             </ContactButton>
           </div>

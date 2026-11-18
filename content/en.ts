@@ -15,7 +15,8 @@ export const en: Dictionary = {
       "AI agents",
       "workflow automation",
       "hire full-stack developer",
-      "React Native developer",
+      "NestJS developer",
+      "Flutter developer",
       "Next.js",
       "Node.js",
       "nearshore Brazil",
@@ -23,6 +24,7 @@ export const en: Dictionary = {
     ogLocale: "en_US",
   },
   nav: {
+    cases: "Cases",
     about: "About",
     services: "Services",
     agents: "AI Agents",
@@ -46,9 +48,70 @@ export const en: Dictionary = {
     title: "Clients in Brazil and abroad.",
     titleMuted: "From Brazil to Abu Dhabi, companies that trusted our engineering.",
     items: [
-      { name: "Pod1um", role: "Sports platform · Full-stack & Mobile", region: "International" },
+      { name: "Pod1um", role: "Sports management SaaS · Full-stack & Mobile", region: "Dublin, Ireland" },
       { name: "Halavanca BJJ", role: "Jiu-jitsu", region: "Brazil · Abu Dhabi" },
-      { name: "BK Company", role: "Current partner", region: "Brazil" },
+      { name: "BK Company", role: "E-commerce SaaS · Shopify", region: "Brazil" },
+    ],
+  },
+  cases: {
+    eyebrow: "Case studies",
+    title: "Software in production, at real scale.",
+    titleMuted: "What we built, for whom, and with what result.",
+    highlightsLabel: "What was done",
+    stackLabel: "Stack",
+    items: [
+      {
+        client: "BK Company",
+        context: "E-commerce SaaS · Shopify App Store partner",
+        period: "2026 — present",
+        title: "BK Reviews: product reviews in more than 80,000 Shopify stores",
+        summary:
+          "BK Company is one of the largest dropshipping service providers in Latin America. The work there is building and evolving BK Reviews, a product reviews app for Shopify stores, in a high-concurrency environment, plus Python AI solutions integrated into the company's products.",
+        metrics: [
+          { value: "80k+", label: "stores with the app installed" },
+        ],
+        highlights: [
+          "Internal bug tracker fed through WhatsApp: AI (Gemini) reads customers' text, audio and images and turns them into structured kanban cards.",
+          "BK Reviews integration with the Tray platform, including diagnosing install-flow failures together with the platform's support team.",
+          "Visual refactor of the admin dashboard with automated pixel-perfect validation (Playwright + pixelmatch).",
+        ],
+        stack: ["NestJS", "Next.js", "Go", "Python", "PostgreSQL", "MongoDB", "Redis", "RabbitMQ"],
+      },
+      {
+        client: "Pod1um",
+        context: "Sports management SaaS · Dublin, Ireland",
+        period: "2021 — 2026",
+        title: "A sports platform with 4 applications and 12,000+ users",
+        summary:
+          "A complete platform connecting athletes, coaches and sports organizations, with scheduling, performance analytics and training management. Four applications (admin, coach, athlete and store/e-commerce) across web and mobile.",
+        metrics: [
+          { value: "12k+", label: "users on the platform" },
+          { value: "−50%", label: "front-end build time" },
+          { value: "−45%", label: "time to detect bugs" },
+        ],
+        highlights: [
+          "Scalable architecture with Next.js and TypeScript on the front end and NestJS on the back end.",
+          "Cross-platform mobile apps in Flutter, following Clean Architecture.",
+          "Observability with OpenTelemetry and SigNoz, robust authentication, analytics dashboards, webhooks and messaging.",
+        ],
+        stack: ["Next.js", "TypeScript", "NestJS", "PostgreSQL", "Flutter", "Docker"],
+      },
+      {
+        client: "Halavanca BJJ",
+        context: "Jiu-jitsu · Brazil and Abu Dhabi",
+        period: "LoadLab app",
+        title: "Real-time heart rate over Bluetooth, in athletes' everyday routine",
+        summary:
+          "LoadLab, a mobile app built for Halavanca BJJ and used by its athletes in Brazil and Abu Dhabi. It connects to heart rate monitors over Bluetooth and tracks the athlete's heartbeat in real time, during training and day to day. The metrics become charts and are tied to the activities logged on the map.",
+        metrics: [],
+        highlights: [
+          "Continuous heart rate readings over Bluetooth, updated on screen in real time.",
+          "Effort metrics verified from the sensors, so athletes and coaches can trust what they see.",
+          "Custom charts to follow progress, plus Google Maps integration for routes and location.",
+          "Fully accessible app.",
+        ],
+        stack: ["Flutter", "Bluetooth", "Clean Architecture", "BLoC", "Google Maps API"],
+      },
     ],
   },
   founder: {
@@ -56,14 +119,17 @@ export const en: Dictionary = {
     name: "Francisco Santana",
     role: "Full-stack & mobile software engineer · Founder",
     paragraphs: [
-      "Francisco Santana Digital Solutions grew out of my path as a full-stack and mobile software engineer, building products for clients in Brazil and abroad.",
-      "I worked as a full-stack and mobile software engineer at Pod1um, an international sports platform, served Halavanca BJJ across Brazil and Abu Dhabi, and today I work at BK Company.",
-      "On every project you talk to me directly: the person who designs the architecture is the person who sees it through to delivery.",
+      "Francisco Santana Digital Solutions grew out of 5+ years building web and mobile products for clients in Brazil and abroad.",
+      "I spent more than four years as a full-stack developer at Pod1um, a Dublin, Ireland-based sports management platform with 12,000+ users. I built LoadLab for Halavanca BJJ, used in Brazil and Abu Dhabi, and today I build BK Reviews at BK Company, an app installed in more than 80,000 Shopify stores.",
+      "I hold a B.Sc. in Computer Science from UFPB, with information security research funded by PIBIC-CNPq. On every project you talk to me directly: the person who designs the architecture is the person who sees it through to delivery.",
     ],
     facts: [
       { label: "Focus", value: "Full-stack · Mobile · Data · AI" },
-      { label: "Clients", value: "Brazil and international" },
-      { label: "Stack", value: "React · Next.js · Node.js · React Native" },
+      { label: "Experience", value: "5+ years · clients in Brazil and abroad" },
+      { label: "Stack", value: "React · Next.js · NestJS · Flutter · Go · Python" },
+      { label: "Education", value: "B.Sc. Computer Science · UFPB" },
+      { label: "Research", value: "Information security · published papers" },
+      { label: "Upwork", value: "Top Rated · 100% Job Success" },
     ],
     linkedin: "View LinkedIn",
     cta: "Talk to Francisco",
@@ -104,7 +170,7 @@ export const en: Dictionary = {
       {
         title: "Web, Mobile & Custom Software Development",
         description:
-          "Scalable, end-to-end applications built with modern ecosystems (React, Next.js, Node.js, React Native) designed to support enterprise growth.",
+          "Scalable, end-to-end applications built with modern ecosystems (React, Next.js, NestJS, Flutter) designed to support enterprise growth.",
       },
     ],
     scenes: {
@@ -163,18 +229,7 @@ export const en: Dictionary = {
     cta: "Book a Call with Francisco Santana Solutions",
   },
   contact: {
-    title: "Let's talk about your project",
-    description: "Tell us briefly what you need. We reply within 1 business day.",
-    name: "Name",
-    email: "Email",
-    company: "Company (optional)",
-    message: "Message",
-    messagePlaceholder: "What do you want to build, automate, or improve?",
-    submit: "Send message",
-    sending: "Sending...",
-    success: "Message sent! We'll get back to you soon.",
-    error: "We couldn't send it right now. Try again or email",
-    orEmail: "Prefer email? Write to",
+    whatsappMessage: "Hi Francisco! I found your website and would like to talk about a project.",
   },
   footer: {
     tagline: "Software engineering, data, and intelligent automation.",

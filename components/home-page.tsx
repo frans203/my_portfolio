@@ -1,5 +1,5 @@
-import { ContactDialog } from "@/components/contact-dialog";
 import { AgentFlow } from "@/components/sections/agent-flow";
+import { Cases } from "@/components/sections/cases";
 import { Clients } from "@/components/sections/clients";
 import { FinalCta } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
@@ -18,6 +18,7 @@ export function HomePage({ dict }: { dict: Dictionary }) {
       <main>
         <Hero dict={dict} />
         <Clients dict={dict} />
+        <Cases dict={dict} />
         <Founder dict={dict} />
         <Services dict={dict} />
         <AgentFlow dict={dict} />
@@ -26,7 +27,6 @@ export function HomePage({ dict }: { dict: Dictionary }) {
         <FinalCta dict={dict} />
       </main>
       <Footer dict={dict} />
-      <ContactDialog dict={dict} />
     </>
   );
 }

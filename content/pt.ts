@@ -17,12 +17,14 @@ export const pt: Dictionary = {
       "desenvolvimento de aplicativos",
       "React",
       "Next.js",
-      "React Native",
+      "NestJS",
+      "Flutter",
       "Node.js",
     ],
     ogLocale: "pt_BR",
   },
   nav: {
+    cases: "Cases",
     about: "Quem somos",
     services: "Serviços",
     agents: "Agentes de IA",
@@ -46,9 +48,70 @@ export const pt: Dictionary = {
     title: "Clientes nacionais e internacionais.",
     titleMuted: "Do Brasil a Abu Dhabi, empresas que confiaram na nossa engenharia.",
     items: [
-      { name: "Pod1um", role: "Plataforma esportiva · Full-stack & Mobile", region: "Internacional" },
+      { name: "Pod1um", role: "SaaS de gestão esportiva · Full-stack & Mobile", region: "Dublin, Irlanda" },
       { name: "Halavanca BJJ", role: "Jiu-jitsu", region: "Brasil · Abu Dhabi" },
-      { name: "BK Company", role: "Parceiro atual", region: "Brasil" },
+      { name: "BK Company", role: "SaaS para e-commerce · Shopify", region: "Brasil" },
+    ],
+  },
+  cases: {
+    eyebrow: "Cases",
+    title: "Software em produção, com escala real.",
+    titleMuted: "O que construímos, para quem e com qual resultado.",
+    highlightsLabel: "O que foi feito",
+    stackLabel: "Stack",
+    items: [
+      {
+        client: "BK Company",
+        context: "SaaS para e-commerce · Parceira Shopify App Store",
+        period: "2026 — atual",
+        title: "BK Reviews: avaliações de produtos em mais de 80 mil lojas Shopify",
+        summary:
+          "A BK Company é uma das maiores empresas de serviços para dropshipping da América Latina. Lá, o trabalho é desenvolver e evoluir o BK Reviews, app de avaliações de produtos para lojas Shopify, num ambiente de alta concorrência, além de soluções de IA em Python integradas aos produtos da empresa.",
+        metrics: [
+          { value: "80 mil+", label: "lojas com o app instalado" },
+        ],
+        highlights: [
+          "Ferramenta interna de bugs com entrada pelo WhatsApp: a IA (Gemini) lê texto, áudio e imagem do cliente e gera um card estruturado no kanban.",
+          "Integração do BK Reviews com a plataforma Tray, incluindo diagnóstico de falhas no fluxo de instalação junto ao suporte da plataforma.",
+          "Refatoração visual do painel administrativo com validação pixel-perfect automatizada (Playwright + pixelmatch).",
+        ],
+        stack: ["NestJS", "Next.js", "Go", "Python", "PostgreSQL", "MongoDB", "Redis", "RabbitMQ"],
+      },
+      {
+        client: "Pod1um",
+        context: "SaaS de gestão esportiva · Dublin, Irlanda",
+        period: "2021 — 2026",
+        title: "Plataforma esportiva com 4 aplicações e mais de 12 mil usuários",
+        summary:
+          "Plataforma completa conectando atletas, treinadores e organizações esportivas, com agendamento, análise de performance e gestão de treinos. São 4 aplicações: administrador, treinador, atleta e loja (e-commerce), na web e no mobile.",
+        metrics: [
+          { value: "12 mil+", label: "usuários na plataforma" },
+          { value: "−50%", label: "no tempo de build do front-end" },
+          { value: "−45%", label: "no tempo de detecção de bugs" },
+        ],
+        highlights: [
+          "Arquitetura escalável com Next.js e TypeScript no front-end e NestJS no back-end.",
+          "Apps mobile cross-platform em Flutter, com Clean Architecture.",
+          "Observabilidade com OpenTelemetry e SigNoz, autenticação robusta, dashboards analíticos, webhooks e mensageria.",
+        ],
+        stack: ["Next.js", "TypeScript", "NestJS", "PostgreSQL", "Flutter", "Docker"],
+      },
+      {
+        client: "Halavanca BJJ",
+        context: "Jiu-jitsu · Brasil e Abu Dhabi",
+        period: "App LoadLab",
+        title: "Batimentos cardíacos em tempo real via Bluetooth, no dia a dia dos atletas",
+        summary:
+          "LoadLab, aplicativo mobile desenvolvido para a Halavanca BJJ e usado pelos atletas no Brasil e em Abu Dhabi. Conecta via Bluetooth a monitores cardíacos e acompanha os batimentos do atleta em tempo real, nos treinos e na rotina. As métricas viram gráficos e ficam ligadas às atividades registradas no mapa.",
+        metrics: [],
+        highlights: [
+          "Leitura contínua de frequência cardíaca via Bluetooth, com os dados atualizados em tempo real na tela.",
+          "Verificação das métricas de esforço a partir dos sensores, para o atleta e o treinador confiarem no que veem.",
+          "Gráficos customizados para acompanhar a evolução e integração com Google Maps para rotas e localização.",
+          "Acessibilidade completa no app.",
+        ],
+        stack: ["Flutter", "Bluetooth", "Clean Architecture", "BLoC", "Google Maps API"],
+      },
     ],
   },
   founder: {
@@ -56,14 +119,17 @@ export const pt: Dictionary = {
     name: "Francisco Santana",
     role: "Engenheiro de software full-stack & mobile · Fundador",
     paragraphs: [
-      "A Francisco Santana Soluções Digitais nasceu da minha trajetória como engenheiro de software full-stack e mobile, construindo produtos para clientes no Brasil e no exterior.",
-      "Atuei como engenheiro de software full-stack e mobile na Pod1um, plataforma internacional voltada para esportes, atendi a Halavanca BJJ, com atuação no Brasil e em Abu Dhabi, e hoje atuo na BK Company.",
-      "Em cada projeto, você fala diretamente comigo: quem desenha a arquitetura é quem acompanha a entrega.",
+      "A Francisco Santana Soluções Digitais nasceu de mais de 5 anos construindo produtos web e mobile para clientes no Brasil e no exterior.",
+      "Fui desenvolvedor full-stack da Pod1um, de Dublin, na Irlanda, por mais de quatro anos, numa plataforma de gestão esportiva com mais de 12 mil usuários. Desenvolvi o LoadLab para a Halavanca BJJ, usado no Brasil e em Abu Dhabi, e hoje desenvolvo o BK Reviews na BK Company, app presente em mais de 80 mil lojas Shopify.",
+      "Sou bacharel em Ciência da Computação pela UFPB, com pesquisa em segurança da informação pelo PIBIC-CNPq. Em cada projeto, você fala diretamente comigo: quem desenha a arquitetura é quem acompanha a entrega.",
     ],
     facts: [
       { label: "Atuação", value: "Full-stack · Mobile · Dados · IA" },
-      { label: "Clientes", value: "Nacionais e internacionais" },
-      { label: "Stack", value: "React · Next.js · Node.js · React Native" },
+      { label: "Experiência", value: "5+ anos · clientes nacionais e internacionais" },
+      { label: "Stack", value: "React · Next.js · NestJS · Flutter · Go · Python" },
+      { label: "Formação", value: "Ciência da Computação · UFPB" },
+      { label: "Pesquisa", value: "Segurança da informação · artigos publicados" },
+      { label: "Upwork", value: "Top Rated · 100% Job Success" },
     ],
     linkedin: "Ver LinkedIn",
     cta: "Falar com Francisco",
@@ -104,7 +170,7 @@ export const pt: Dictionary = {
       {
         title: "Desenvolvimento Web, Mobile & Sistemas Sob Medida",
         description:
-          "Aplicações completas e escaláveis em React, Next.js, Node.js e React Native, desenhadas sob medida para suportar o crescimento da sua empresa.",
+          "Aplicações completas e escaláveis em React, Next.js, NestJS e Flutter, desenhadas sob medida para suportar o crescimento da sua empresa.",
       },
     ],
     scenes: {
@@ -164,18 +230,7 @@ export const pt: Dictionary = {
     cta: "Agendar Reunião com a Francisco Santana Soluções",
   },
   contact: {
-    title: "Vamos conversar sobre o seu projeto",
-    description: "Conte rapidamente o que você precisa. Respondemos em até 1 dia útil.",
-    name: "Nome",
-    email: "E-mail",
-    company: "Empresa (opcional)",
-    message: "Mensagem",
-    messagePlaceholder: "O que você quer construir, automatizar ou melhorar?",
-    submit: "Enviar mensagem",
-    sending: "Enviando...",
-    success: "Mensagem enviada! Entraremos em contato em breve.",
-    error: "Não foi possível enviar agora. Tente de novo ou escreva para",
-    orEmail: "Prefere e-mail? Escreva para",
+    whatsappMessage: "Olá, Francisco! Vim pelo seu site e gostaria de conversar sobre um projeto.",
   },
   footer: {
     tagline: "Engenharia de software, dados e automação inteligente.",
