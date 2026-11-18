@@ -26,7 +26,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
           <div className="mt-6 grid gap-10 border-t border-white/10 pt-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <p className="max-w-2xl text-lg leading-relaxed text-pretty text-neutral-400">{dict.hero.subheadline}</p>
             <div className="flex flex-wrap items-center gap-6">
-              <ContactButton>{dict.hero.primaryCta}</ContactButton>
+              <ContactButton message={dict.contact.whatsappMessage}>{dict.hero.primaryCta}</ContactButton>
               <a
                 href="#servicos"
                 className="group inline-flex items-center gap-2 text-[15px] text-neutral-300 transition-colors hover:text-white"

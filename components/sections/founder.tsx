@@ -1,7 +1,8 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "motion/react";
+import { useInView } from "motion/react";
+import { useRef } from "react";
 import { FS_PATHS } from "@/components/brand/fs-mark";
 import { ContactButton } from "@/components/contact-button";
 import { DrawLine } from "@/components/motion/draw-line";
@@ -13,11 +14,16 @@ import { site } from "@/lib/site";
 // "Quem está por trás": Francisco Santana. O monograma FS se desenha ao entrar na tela.
 export function Founder({ dict }: { dict: Dictionary }) {
   const f = dict.founder;
+  // Mesmo traço em CSS do logo do header (.fs-draw), que funciona em todos os navegadores mobile.
+  // O motion só detecta a entrada na tela; o desenho é feito pelo stroke-dashoffset em CSS.
+  const markRef = useRef<SVGSVGElement>(null);
+  const markInView = useInView(markRef, { once: true, amount: 0.4 });
   return (
     <section id="sobre" aria-labelledby="founder-title" className="scroll-mt-16 bg-white py-28 text-black sm:py-40">
       <div className="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[5fr_7fr] lg:gap-24">
         <div className="flex aspect-square w-full max-w-md items-center justify-center bg-black p-[18%] text-white">
           <svg
+            ref={markRef}
             viewBox="0 0 64 64"
             fill="none"
             stroke="currentColor"
@@ -29,13 +35,16 @@ export function Founder({ dict }: { dict: Dictionary }) {
             aria-label="FS — Francisco Santana"
           >
             {FS_PATHS.map((d, i) => (
-              <motion.path
+              <path
                 key={d}
                 d={d}
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true, margin: "0px 0px -15% 0px" }}
-                transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1], delay: 0.2 + i * 0.3 }}
+                pathLength={1}
+                className={markInView ? "fs-draw fs-draw-slow" : undefined}
+                style={
+                  markInView
+                    ? { animationDelay: `${0.2 + i * 0.3}s` }
+                    : { strokeDasharray: 1, strokeDashoffset: 1 }
+                }
               />
             ))}
           </svg>
@@ -74,7 +83,7 @@ export function Founder({ dict }: { dict: Dictionary }) {
           </dl>
 
           <div className="mt-12 flex flex-wrap items-center gap-6">
-            <ContactButton tone="dark">{f.cta}</ContactButton>
+            <ContactButton message={dict.contact.whatsappMessage} tone="dark">{f.cta}</ContactButton>
             <a
               href={site.social.linkedin}
               target="_blank"

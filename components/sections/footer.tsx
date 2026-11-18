@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FsMark } from "@/components/brand/fs-mark";
 import { RevealText } from "@/components/motion/reveal-text";
 import type { Dictionary } from "@/content/types";
-import { routes, site } from "@/lib/site";
+import { routes, site, whatsappUrl } from "@/lib/site";
 
 export function Footer({ dict }: { dict: Dictionary }) {
   const year = new Date().getFullYear();
@@ -26,6 +26,11 @@ export function Footer({ dict }: { dict: Dictionary }) {
                   </a>
                 </li>
                 <li>
+                  <a href={whatsappUrl(dict.contact.whatsappMessage)} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                    WhatsApp {site.whatsapp.display}
+                  </a>
+                </li>
+                <li>
                   <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>
                     LinkedIn
                   </a>
@@ -33,11 +38,6 @@ export function Footer({ dict }: { dict: Dictionary }) {
                 <li>
                   <a href={site.social.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
                     GitHub
-                  </a>
-                </li>
-                <li>
-                  <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                    Instagram
                   </a>
                 </li>
               </ul>

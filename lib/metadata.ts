@@ -41,6 +41,7 @@ export function jsonLd(dict: Dictionary) {
     url: new URL(routes[dict.locale], site.url).toString(),
     description: dict.meta.description,
     email: site.email,
+    telephone: `+${site.whatsapp.number}`,
     founder: {
       "@type": "Person",
       name: "Francisco Santana",

@@ -7,6 +7,7 @@ import { routes, site } from "@/lib/site";
 export function Header({ dict }: { dict: Dictionary }) {
   const otherLocale = dict.locale === "pt" ? "en" : "pt";
   const links = [
+    { href: "#cases", label: dict.nav.cases },
     { href: "#sobre", label: dict.nav.about },
     { href: "#servicos", label: dict.nav.services },
     { href: "#agentes", label: dict.nav.agents },
@@ -41,7 +42,7 @@ export function Header({ dict }: { dict: Dictionary }) {
           >
             {dict.nav.switchLanguage}
           </Link>
-          <ContactButton size="sm">{dict.nav.cta}</ContactButton>
+          <ContactButton message={dict.contact.whatsappMessage} size="sm">{dict.nav.cta}</ContactButton>
         </div>
       </div>
     </header>

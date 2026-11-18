@@ -29,7 +29,6 @@ Comandos: `npm run dev`, `npm run build` (gera `out/`), `npm run lint`. Não há
   - Contínuas: globo 3D do hero (`hero-globe.tsx`, lib `cobe`, pausa fora da tela) e marquee de logos.
   - `MotionConfig reducedMotion="user"` em `providers.tsx` + regra de `prefers-reduced-motion` no CSS.
 - **Tipografia**: Schibsted Grotesk (`--font-schibsted`, texto/títulos com `tracking-[-0.03em]`) + IBM Plex Mono (`--font-plex-mono`, rótulos pequenos em caixa alta).
-- **Zustand / React Query**: só em componentes `"use client"`. `components/providers.tsx` tem o `QueryClientProvider`. Stores pequenas por domínio em `stores/` (hoje: `contact-modal.ts`). Só adicione quando houver uso real.
 - **Logos**: em `lib/site.ts` (`clients`). Wordmarks (largura > 2× altura) aparecem sozinhos; logos quadrados aparecem com o nome ao lado. Todos em `grayscale`.
 - **Mobile**: conteúdo largo (terminal, código) precisa de `min-w-0` no item de grid + `overflow-x-auto`, senão a página ganha scroll horizontal.
 
@@ -37,17 +36,17 @@ Comandos: `npm run dev`, `npm run build` (gera `out/`), `npm run lint`. Não há
 
 - `components/ui/` é gerado por `npx shadcn@latest add ...` (shadcn base-ui + registry `@cult-ui/<nome>`). Evite editar à mão; se precisar customizar, faça wrapper em `components/`.
 - Os componentes do Cult UI usados na 1ª versão (border-beam, bg-animate-button, texture-card, terminal) foram removidos por darem cara de IA. Antes de adicionar qualquer componente de registry, confira se ele não cai na lista "proibido" acima.
-- Seções em `components/sections/`, montadas por `components/home-page.tsx` nesta ordem: Header → Hero (B) → Clients (B, "nacionais e internacionais" + marquee) → Founder (W, "Quem está por trás") → Services (B) → AgentFlow (W) → Versatility (B) → Process (W) → FinalCta (B) → Footer (B, assinatura gigante com o nome), + `ContactDialog`. Não há FAQ (removido a pedido).
+- Seções em `components/sections/`, montadas por `components/home-page.tsx` nesta ordem: Header → Hero (B) → Clients (B, "nacionais e internacionais" + marquee) → Cases (B, um por cliente com logo de `site.clients`, métricas e stack; fonte: currículo) → Founder (W, "Quem está por trás") → Services (B) → AgentFlow (W) → Versatility (B) → Process (W) → FinalCta (B) → Footer (B, assinatura gigante com o nome). Não há FAQ (removido a pedido).
 - **Logo**: monograma FS vetorial em `public/brand/fs-mark-{white,black}.svg`, `public/icon.svg` (favicon) e `components/brand/fs-mark.tsx` (`FS_PATHS`). Mudou o desenho? Atualize os quatro + `app/(pt)/og.png/route.tsx`.
-- Âncoras usadas pelo menu: `#sobre`, `#servicos`, `#agentes`, `#processo` (iguais nas duas línguas).
+- Âncoras usadas pelo menu: `#cases`, `#sobre`, `#servicos`, `#agentes`, `#processo` (iguais nas duas línguas).
 
 ## Dev server
 
 O `next dev` (Turbopack) às vezes não recarrega mudanças no `app/globals.css`. Se uma classe nova do CSS não aparecer, pare o servidor, apague `.next/dev` e suba de novo.
 
-## Contato / Netlify Forms
+## Contato / WhatsApp
 
-Todo CTA usa `ContactButton` → abre `ContactDialog` (estado em `stores/contact-modal.ts`). O envio é `useMutation` com POST `application/x-www-form-urlencoded` para `/__forms.html`. O form "fantasma" em `public/__forms.html` precisa ter **os mesmos campos** do modal — ao adicionar um campo, atualize os dois. Netlify Forms só funciona no deploy (localmente o POST falha e o modal mostra o erro com o e-mail como fallback).
+Todo CTA usa `ContactButton` (precisa da prop `message={dict.contact.whatsappMessage}`) → link `https://wa.me/<número>?text=<mensagem>` em nova aba, montado por `whatsappUrl()` em `lib/site.ts`. Número e e-mail ficam em `site.whatsapp` / `site.email`. O footer lista WhatsApp, e-mail, LinkedIn e GitHub (sem Instagram). Não há formulário nem modal de contato.
 
 ## Deploy
 

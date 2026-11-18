@@ -10,6 +10,7 @@ export type Dictionary = {
     ogLocale: string;
   };
   nav: {
+    cases: string;
     about: string;
     services: string;
     agents: string;
@@ -32,6 +33,24 @@ export type Dictionary = {
     title: string;
     titleMuted: string;
     items: { name: string; role: string; region: string }[];
+  };
+  cases: {
+    eyebrow: string;
+    title: string;
+    titleMuted: string;
+    highlightsLabel: string;
+    stackLabel: string;
+    items: {
+      client: string;
+      /** Ex.: "SaaS para e-commerce · Shopify" */
+      context: string;
+      period: string;
+      title: string;
+      summary: string;
+      metrics: { value: string; label: string }[];
+      highlights: string[];
+      stack: string[];
+    }[];
   };
   founder: {
     eyebrow: string;
@@ -83,18 +102,8 @@ export type Dictionary = {
     cta: string;
   };
   contact: {
-    title: string;
-    description: string;
-    name: string;
-    email: string;
-    company: string;
-    message: string;
-    messagePlaceholder: string;
-    submit: string;
-    sending: string;
-    success: string;
-    error: string;
-    orEmail: string;
+    /** Mensagem pré-preenchida ao abrir o WhatsApp pelos CTAs. */
+    whatsappMessage: string;
   };
   footer: {
     tagline: string;
