@@ -52,6 +52,8 @@ Todo CTA usa `ContactButton` (precisa da prop `message={dict.contact.whatsappMes
 
 `netlify.toml`: `command = "npm run build"`, `publish = "out"`, Node 22. `trailingSlash: true` no `next.config.ts` (gera `en/index.html`). URL do site via `NEXT_PUBLIC_SITE_URL` (fallback em `lib/site.ts`).
 
+Projetos de clientes em subcaminhos (ex.: `fsdev.site/derrete`) são **proxy da Netlify** em `netlify.toml` (`[[redirects]]` com `status = 200` e `force = true`) para o site do projeto na Netlify. Não use rewrites do Next (static export não suporta). O projeto precisa ser gerado com `base` igual ao subcaminho (ex.: Vite `base: '/derrete/'`).
+
 ## Docs do projeto
 
 - `docs/copy.md` — copy de referência (Gemini).

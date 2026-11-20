@@ -4,3 +4,20 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# ---------------------------------------------------------------
+# Projetos de clientes servidos dentro do domínio (proxy, não redirect):
+# a URL continua fsdev.site/derrete e cada deploy do projeto aparece aqui na hora.
+# O site da Derrete é gerado com base "/derrete/" (repo derrete-escocia-site).
+# ---------------------------------------------------------------
+[[redirects]]
+  from = "/derrete"
+  to = "https://derrete-escocia.netlify.app/derrete/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/derrete/*"
+  to = "https://derrete-escocia.netlify.app/derrete/:splat"
+  status = 200
+  force = true
