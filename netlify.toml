@@ -21,3 +21,29 @@
   to = "https://derrete-escocia.netlify.app/derrete/:splat"
   status = 200
   force = true
+
+# Adelmo Júnior Advocacia (repo adelmo-advocacia-site, base "/adelmo/")
+[[redirects]]
+  from = "/adelmo"
+  to = "https://adelmo-advocacia.netlify.app/adelmo/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/adelmo/*"
+  to = "https://adelmo-advocacia.netlify.app/adelmo/:splat"
+  status = 200
+  force = true
+
+# Dr. Fernando Fernandes (repo fernando-fernandes-site, base "/fernandofernandes/")
+[[redirects]]
+  from = "/fernandofernandes"
+  to = "https://fernando-fernandes.netlify.app/fernandofernandes/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/fernandofernandes/*"
+  to = "https://fernando-fernandes.netlify.app/fernandofernandes/:splat"
+  status = 200
+  force = true
