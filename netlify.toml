@@ -47,3 +47,16 @@
   to = "https://fernando-fernandes.netlify.app/fernandofernandes/:splat"
   status = 200
   force = true
+
+# Jason: site de vendas do cortador de lives de GTA 6 (repo jason-site, basePath "/gta6")
+[[redirects]]
+  from = "/gta6"
+  to = "https://jason-gta6.netlify.app/gta6/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/gta6/*"
+  to = "https://jason-gta6.netlify.app/gta6/:splat"
+  status = 200
+  force = true
