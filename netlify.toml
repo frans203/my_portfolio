@@ -6,20 +6,23 @@
   NODE_VERSION = "22"
 
 # ---------------------------------------------------------------
-# Projetos de clientes servidos dentro do domínio (proxy, não redirect):
-# a URL continua fsdev.site/derrete e cada deploy do projeto aparece aqui na hora.
-# O site da Derrete é gerado com base "/derrete/" (repo derrete-escocia-site).
+# Projetos de clientes.
+# Padrão novo: cada cliente no próprio subdomínio (ex.: derrete.fsdev.site), para o SEO do
+# cliente não se misturar com o do portfólio. O endereço antigo em pasta redireciona (301).
+# Os que ainda estão em pasta usam proxy (status 200) e devem migrar do mesmo jeito.
 # ---------------------------------------------------------------
+
+# Derrete Escócia (repo derrete-escocia-site, base "/", https://derrete.fsdev.site)
 [[redirects]]
   from = "/derrete"
-  to = "https://derrete-escocia.netlify.app/derrete/"
-  status = 200
+  to = "https://derrete.fsdev.site/"
+  status = 301
   force = true
 
 [[redirects]]
   from = "/derrete/*"
-  to = "https://derrete-escocia.netlify.app/derrete/:splat"
-  status = 200
+  to = "https://derrete.fsdev.site/:splat"
+  status = 301
   force = true
 
 # Adelmo Júnior Advocacia (repo adelmo-advocacia-site, base "/adelmo/")
