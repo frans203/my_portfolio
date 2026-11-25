@@ -5,5 +5,5 @@
 /fernandofernandes      https://fernandofernandes.fsdev.site/      301
 /fernandofernandes/*    https://fernandofernandes.fsdev.site/:splat 301
 
-# /adelmo e /gta6 não passam por aqui: cada um é um Worker próprio com rota no domínio
-# (fsdev.site/adelmo* e fsdev.site/gta6*; ver wrangler.jsonc dos repos advocacia-site e jason-site).
+# /adelmo e /gta6 não passam por aqui: o worker.mjs entrega os Workers "adelmo" e "gta6"
+# (repos advocacia-site e jason-site).
