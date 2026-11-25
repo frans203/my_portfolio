@@ -4,7 +4,7 @@ Guia para o Claude Code trabalhar neste repositório.
 
 ## Visão geral
 
-Landing page bilíngue de **Francisco Santana Soluções Digitais** (software house: engenharia, dados, agentes de IA). Next.js 16 App Router + TypeScript + Tailwind v4 + shadcn/ui, exportado como **site estático** (`output: "export"`) e publicado na **Netlify** a partir de `out/`.
+Landing page bilíngue de **Francisco Santana Soluções Digitais** (software house: engenharia, dados, agentes de IA). Next.js 16 App Router + TypeScript + Tailwind v4 + shadcn/ui, exportado como **site estático** (`output: "export"`) e publicado na **Cloudflare** (Worker `portfolio`, `wrangler.jsonc`).
 
 Comandos: `npm run dev`, `npm run build` (gera `out/`), `npm run lint`. Não há testes.
 
@@ -50,9 +50,9 @@ Todo CTA usa `ContactButton` (precisa da prop `message={dict.contact.whatsappMes
 
 ## Deploy
 
-`netlify.toml`: `command = "npm run build"`, `publish = "out"`, Node 22. `trailingSlash: true` no `next.config.ts` (gera `en/index.html`). URL do site via `NEXT_PUBLIC_SITE_URL` (fallback em `lib/site.ts`).
+`npm run deploy` = `next build` + `npx wrangler@4 deploy` (Worker `portfolio` com os arquivos de `out/`, domínios `fsdev.site` e `www.fsdev.site` no `wrangler.jsonc`; o `worker.mjs` manda `www` para o domínio sem `www`). `trailingSlash: true` no `next.config.ts` (gera `en/index.html`). URL do site via `NEXT_PUBLIC_SITE_URL` (fallback em `lib/site.ts`).
 
-Projetos de clientes em subcaminhos (ex.: `fsdev.site/derrete`) são **proxy da Netlify** em `netlify.toml` (`[[redirects]]` com `status = 200` e `force = true`) para o site do projeto na Netlify. Não use rewrites do Next (static export não suporta). O projeto precisa ser gerado com `base` igual ao subcaminho (ex.: Vite `base: '/derrete/'`). Hoje: `/derrete`, `/adelmo`, `/fernandofernandes`, `/gta6` (Next com `basePath`).
+Projetos de clientes: o padrão é **subdomínio próprio** (`derrete.fsdev.site`, `fernandofernandes.fsdev.site`), e o endereço antigo em pasta redireciona (301) em `public/_redirects`. Os que ainda ficam em pasta (`/adelmo`, `/gta6`) são Workers próprios (`adelmo`, `gta6`) entregues pelo `worker.mjs` via service binding (`services` no `wrangler.jsonc`); o projeto precisa ser gerado com `base` igual ao subcaminho. Não use rewrites do Next (static export não suporta).
 
 ## Docs do projeto
 

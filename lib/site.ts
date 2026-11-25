@@ -1,6 +1,6 @@
 // Dados globais do site. Ajuste aqui quando o domínio/contatos mudarem.
 export const site = {
-  // URL de produção (Netlify: site "fransportfolio"). Usado em canonical, sitemap e Open Graph.
+  // URL de produção (Cloudflare, Worker "portfolio"). Usado em canonical, sitemap e Open Graph.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://fsdev.site",
   name: "Francisco Santana Soluções Digitais",
   shortName: "Francisco Santana",
