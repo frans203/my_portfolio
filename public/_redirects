@@ -1,0 +1,9 @@
+# Clientes em subdomínio próprio (o SEO do cliente não se mistura com o do portfólio).
+# Os endereços antigos em pasta redirecionam (301).
+/derrete                https://derrete.fsdev.site/                301
+/derrete/*              https://derrete.fsdev.site/:splat          301
+/fernandofernandes      https://fernandofernandes.fsdev.site/      301
+/fernandofernandes/*    https://fernandofernandes.fsdev.site/:splat 301
+
+# /adelmo e /gta6 não passam por aqui: cada um é um Worker próprio com rota no domínio
+# (fsdev.site/adelmo* e fsdev.site/gta6*; ver wrangler.jsonc dos repos advocacia-site e jason-site).

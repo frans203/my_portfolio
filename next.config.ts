@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Site 100% estático: `next build` gera a pasta `out/`, publicada pela Netlify (ver netlify.toml).
+  // Site 100% estático: `next build` gera a pasta `out/`, publicada na Cloudflare (ver wrangler.jsonc).
   output: "export",
   trailingSlash: true,
   images: { unoptimized: true },

@@ -1,0 +1,15 @@
+// Portfólio https://fsdev.site — Cloudflare Worker com os arquivos do `next build` (out/).
+// Clientes: /adelmo e /gta6 têm Workers próprios com rota mais específica no mesmo domínio.
+// Publicar: npm run deploy
+{
+  "name": "portfolio",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-23",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
+  },
+  "workers_dev": true
+}
