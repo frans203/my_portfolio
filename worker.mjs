@@ -15,7 +15,8 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     for (const [pasta, binding] of CLIENTES) {
-      if (url.pathname === pasta || url.pathname.startsWith(pasta + '/')) return env[binding].fetch(req);
+      if (url.pathname === pasta) return Response.redirect(`${url.origin}${pasta}/${url.search}`, 301);
+      if (url.pathname.startsWith(pasta + '/')) return env[binding].fetch(req);
     }
     return env.ASSETS.fetch(req);
   },
