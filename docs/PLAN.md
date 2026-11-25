@@ -4,14 +4,14 @@
 
 ## Objetivo
 
-Substituir o site estático atual (HTML/CSS/JS de 2021) por um site em **Next.js + Tailwind + Cult UI**, focado em **SEO e conversão de clientes**, bilíngue (PT-BR / EN), mantendo o **deploy na Netlify** funcionando.
+Substituir o site estático atual (HTML/CSS/JS de 2021) por um site em **Next.js + Tailwind + Cult UI**, focado em **SEO e conversão de clientes**, bilíngue (PT-BR / EN), com deploy estático simples.
 
 ## Decisões de arquitetura
 
 | Tema | Decisão | Por quê |
 |---|---|---|
 | Framework | Next.js (última estável) com **App Router + TypeScript** | SEO via Metadata API, SSG, ecossistema do shadcn/Cult UI |
-| Renderização | **Static export** (`output: "export"`) → pasta `out/` | Site é 100% conteúdo, sem backend. HTML pré-renderizado = melhor SEO, deploy trivial na Netlify, sem depender do runtime/adapter de Next da Netlify |
+| Renderização | **Static export** (`output: "export"`) → pasta `out/` | Site é 100% conteúdo, sem backend. HTML pré-renderizado = melhor SEO, deploy trivial em qualquer CDN, sem depender de runtime/adapter de Next |
 | Estilo | **Tailwind CSS v4** | Pedido + exigido pelo shadcn/Cult UI |
 | Componentes | **shadcn/ui** (base) + **Cult UI** (registry `@cult-ui`) | Cult UI é instalado via shadcn CLI: `npx shadcn@latest add @cult-ui/<nome>` — copia o código para `components/ui/`, instala `motion` sozinho |
 | Animação | `motion` (vem com Cult UI) | Diagrama do agente de IA, entradas de seção |
@@ -19,7 +19,7 @@ Substituir o site estático atual (HTML/CSS/JS de 2021) por um site em **Next.js
 | Conteúdo | Dicionários tipados `content/pt.ts` e `content/en.ts` | Uma fonte por idioma, TypeScript garante que nenhuma chave falte em um dos dois |
 | Imagens | `next/image` com `unoptimized: true` | Exigência do static export; otimizar os arquivos na mão (WebP/SVG) |
 | Fontes | `next/font` (ex.: Inter ou Geist) | Sem layout shift, self-hosted |
-| Gerenciador | npm | Padrão da Netlify, sem config extra |
+| Gerenciador | npm | Padrão, sem config extra |
 
 ### Estado e dados: Zustand e React Query
 
@@ -34,7 +34,7 @@ Regras:
 - Nenhum dos dois roda em Server Component. Só são usados dentro de componentes `"use client"`.
 - React Query: um `components/providers.tsx` (`"use client"`) com o `QueryClientProvider`, envolvendo o `{children}` nos dois root layouts. O `QueryClient` é criado com `useState` para não ser recriado a cada render.
 - Zustand: stores pequenas e por domínio em `stores/` (ex.: `stores/contact-modal.ts`). Nada de store global única.
-- Com static export não existe API route do Next. O formulário envia para Netlify Forms (POST de `form-urlencoded` para `/`) ou para um serviço externo; o React Query só gerencia o estado da requisição.
+- Com static export não existe API route do Next. O formulário (se houver) envia para um serviço externo; o React Query só gerencia o estado da requisição.
 - Se ao final da Fase 3 nenhum uso real aparecer, a lib não é instalada.
 
 ### i18n em detalhe
@@ -66,7 +66,7 @@ my_portfolio/
 ├── public/
 │   └── clients/            # pod1um, halavanca, bk-company (vêm de assets/clients/)
 ├── docs/                   # copy.md, PLAN.md, prompt-gemini-copy.md
-├── netlify.toml
+├── wrangler.jsonc
 ├── next.config.ts
 └── components.json         # config do shadcn
 ```
@@ -98,23 +98,12 @@ Paleta proposta (tokens no `globals.css`): fundo `#0B0B12`, superfícies `#14141
 - HTML semântico: um `<h1>` por página, `<section>` com `aria-labelledby`, `alt` em todos os logos.
 - Meta: Lighthouse ≥ 95 em Performance, SEO e Accessibility.
 
-## Deploy na Netlify
+## Deploy (Cloudflare)
 
-`netlify.toml` na raiz (sobrescreve o que estiver configurado na UI da Netlify):
-
-```toml
-[build]
-  command = "npm run build"
-  publish = "out"
-
-[build.environment]
-  NODE_VERSION = "22"
-```
+`npm run deploy` = `next build` + `npx wrangler@4 deploy`: Worker `portfolio` com os arquivos de `out/` e os domínios `fsdev.site` / `www.fsdev.site` (ver `wrangler.jsonc` e `worker.mjs`).
 
 - `next.config.ts`: `output: "export"`, `images: { unoptimized: true }`, `trailingSlash: true` (evita 404 em `/en` em host estático).
-- Hoje o site publica a raiz do repo sem build; com o `netlify.toml` a Netlify passa a rodar o build. **Conferir na UI** (Site configuration → Build & deploy) se não há "Base directory" setado e se o deploy de produção aponta para a branch certa.
-- Validar no **Deploy Preview** do PR antes de mergear.
-- Se um dia precisar de formulário: Netlify Forms funciona com static export (form oculto em HTML estático).
+- Redirecionamentos em `public/_redirects`; DNS do fsdev.site na Cloudflare.
 
 ## Status (2026-11-14)
 
@@ -122,20 +111,20 @@ Fases 0–4 implementadas na branch `feat/nextjs-rewrite` (sem commit ainda). Bu
 
 Decisões tomadas por padrão (revisar):
 - Hero: opção 1 do copy.
-- CTA: todos os botões abrem o WhatsApp (`wa.me`) com mensagem pré-preenchida por idioma. Modal/Netlify Forms, Zustand e React Query removidos. Instagram removido dos contatos.
-- Domínio: https://fsdev.site (site Netlify "fransportfolio", DNS na Netlify, deploy automático da `master`)..
+- CTA: todos os botões abrem o WhatsApp (`wa.me`) com mensagem pré-preenchida por idioma. Modal/formulário, Zustand e React Query removidos. Instagram removido dos contatos.
+- Domínio: https://fsdev.site (Cloudflare, Worker `portfolio`; deploy com `npm run deploy`).
 - Projetos antigos (clones) removidos.
 - Copy que não existia (logos, processo, EN do FAQ/versatilidade, rótulos) foi escrita no mesmo tom.
 
 Redesign (2026-11-14): visual trocado para preto e branco premium, sem efeitos de "cara de IA" (ver `docs/design-direction.md`); FAQ e logo "FS" removidos; logos viraram marquee; componentes Cult UI, `motion`, `border-beam` e shaders removidos.
 
-Falta (Fase 5): commit + push, PR, conferir Deploy Preview e Netlify Forms, ativar notificação do form, Search Console, Lighthouse.
+Falta (Fase 5): commit + push, PR, Search Console, Lighthouse.
 
 ## Pendências (decisões suas)
 
 1. **Hero**: qual das 3 opções de headline (copy 2.A)?
 2. ~~**Contato / CTA**~~ — decidido: WhatsApp (+55 83 99685-3565).
-3. **Domínio**: o site fica no `*.netlify.app` atual ou vai ter domínio próprio? (necessário para canonical, sitemap e OG.)
+3. **Domínio**: ~~decidido: fsdev.site~~ (necessário para canonical, sitemap e OG.)
 4. **Projetos antigos** (clones Netflix/Amazon etc.): sugiro **não** levar para o novo site — conflitam com o posicionamento de estúdio. Cases reais (Pod1um, Halavanca, BK) entram no lugar quando houver texto.
 5. **Copy faltando**: seção de logos, "como trabalhamos", e a versão EN do FAQ/versatilidade/hero 3.
 6. **Identidade**: nome final da marca ("Francisco Santana Soluções Digitais"?), logo próprio e logo da BK em alta resolução.

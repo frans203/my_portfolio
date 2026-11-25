@@ -6,7 +6,7 @@ Site institucional de **Francisco Santana Soluções Digitais**: engenharia de s
 
 - **Next.js 16** (App Router, TypeScript) com **static export** (`output: "export"`)
 - **Tailwind CSS v4** + **shadcn/ui** (base-ui); visual preto e branco (ver `docs/design-direction.md`)
-- **Netlify** (deploy estático da pasta `out/`)
+- **Cloudflare** (Worker com os arquivos estáticos de `out/`, ver `wrangler.jsonc`)
 
 ## Rodando
 
@@ -44,6 +44,6 @@ Todo texto está em `content/pt.ts` e `content/en.ts` (tipados por `content/type
 
 ## Deploy
 
-O `netlify.toml` define `npm run build` e publica `out/`.
+`npm run deploy` gera `out/` e publica na Cloudflare (`npx wrangler@4 deploy`; login uma vez com `npx wrangler@4 login`).
 
-Defina `NEXT_PUBLIC_SITE_URL` nas variáveis de ambiente da Netlify com o domínio final (usado em canonical, sitemap e Open Graph).
+`NEXT_PUBLIC_SITE_URL` (opcional) muda o domínio usado em canonical, sitemap e Open Graph; sem ela vale `https://fsdev.site`.

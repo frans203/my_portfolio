@@ -1,0 +1,23 @@
+// Portfólio https://fsdev.site — Cloudflare Worker com os arquivos do `next build` (out/).
+// /adelmo e /gta6 vêm dos Workers "adelmo" (repo advocacia-site) e "gta6" (repo jason-site), ver worker.mjs.
+// Publicar: npm run deploy
+{
+  "name": "portfolio",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-23",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
+  },
+  "services": [
+    { "binding": "ADELMO", "service": "adelmo" },
+    { "binding": "GTA6", "service": "gta6" }
+  ],
+  "routes": [
+    { "pattern": "fsdev.site", "custom_domain": true },
+    { "pattern": "www.fsdev.site", "custom_domain": true }
+  ],
+  "workers_dev": false
+}
