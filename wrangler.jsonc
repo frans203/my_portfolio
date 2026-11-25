@@ -19,5 +19,5 @@
     { "pattern": "fsdev.site", "custom_domain": true },
     { "pattern": "www.fsdev.site", "custom_domain": true }
   ],
-  "workers_dev": true
+  "workers_dev": false
 }
